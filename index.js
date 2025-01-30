@@ -1,9 +1,11 @@
 const express = require("express");
+const productRoute=require("./routes/product.route")
 const app = express();
 
 app.get('/check',(req,res)=>{
   res.status(200).send('Api is Running')
 });
+app.use('/api/product',productRoute)
 
 
 app.listen(5000, () => {
