@@ -1,0 +1,4 @@
+localhost:5000/api/product/create  :POST
+localhost:5000/api/product/read    :GET
+localhost:5000/api/product/update  :PUT
+localhost:5000/api/product/delete  :DELETE
