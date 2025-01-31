@@ -1,23 +1,19 @@
-const express = require("express");
-const productRoute=require("./routes/product.route")
+// server.js
+const express = require('express');
+const connectDB = require('./configs/db');
+const cors = require('cors');
+
+require('dotenv').config();
+
 const app = express();
+connectDB();
 
-app.get('/check',(req,res)=>{
-  res.status(200).send('Api is Running')
-});
-app.use('/api/product',productRoute)
+app.use(cors());
+app.use(express.json());
 
+// Routes
+app.use('/api/user', require('./routes/user.route'));
+app.use('/api/product', require('./routes/product.route'));
 
-app.listen(5000, () => {
-  console.log("Server is Running on PORT 5000");
-});
-
-
-//Address of Local Server:
-//1:localhost
-//2:127.0.0.1
-
-//PORT:5000
-
-// /check =>path
-
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
