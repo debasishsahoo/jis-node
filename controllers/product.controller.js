@@ -16,7 +16,7 @@ const productController = {
   getItems: async (req, res) => {
     try {
       const items = await ProductModel.find({ createdBy: req.user.id });
-      res.json(items);
+      res.status(200).json(items);
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
